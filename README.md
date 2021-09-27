@@ -10,3 +10,7 @@ Trying out tables:
 |----|------|----|--------|
 |1|2|3|4|
 |This|is|a|Table!|
+
+how|ABOUT|this|?
+|-|-|
+lets|see it |this is |a table
