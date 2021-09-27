@@ -7,4 +7,5 @@ first repo
 
 Trying out tables:  
 | Is | This | A | Table? |
+|----|------|----|--------|
 |1|2|3|4|
