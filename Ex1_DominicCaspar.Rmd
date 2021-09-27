@@ -1,0 +1,54 @@
+---
+title: "1b) lognormdist"
+author: "docaspar"
+date: "9/21/2021"
+output: html_document
+---
+
+# clear memory
+```{r}
+rm(list=ls())
+```
+
+# import libs
+````{r}
+library(ggplot2)
+```
+
+
+## Create random sample
+```{r rlnorm}
+set.seed(97)
+dist <- data.frame(sample = rlnorm(100, meanlog = 1, sdlog = 0.25))
+summary(dist)
+
+```
+# Transform sample to log scale
+```{r}
+ldist <- log(dist)
+summary(ldist)
+```
+
+# Plot sample and sample on log scale
+```{r}
+hist(dist$sample, main = "Sample", xlab = "Sample (rlnorm)")
+hist(ldist$sample, main = "Sample on log scale", xlab = "Sample on log scale (rlnorm)")
+paste0("This is the mean of the sample: ", round(mean(dist$sample), 3))
+paste0("The variance of the sample is ", round(var(dist), 3), ".")
+paste0("These are the mean and variance from the sample on log scale: ", round(mean(ldist$sample), 3), ", ",
+       round(var(ldist), 3))
+```
+# creating the same plots with gglot
+```{r}
+ggplot(dist, aes(x = sample))+
+  geom_histogram(bins = 10)+
+  theme_classic()+
+  labs(x = "Sample (rlnorm)", y = "Count", title = "Sample")+
+  theme(plot.title = element_text(hjust = 0.5))
+
+ggplot(ldist, aes(x = sample))+
+  geom_histogram(bins = 10)+
+  theme_classic()+
+  labs(x = "Sample on log scale (rlnorm)", y = "Count", title = "Sample on log scale")+
+  theme(plot.title = element_text(hjust = 0.5))
+````
